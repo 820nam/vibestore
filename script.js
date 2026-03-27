@@ -106,12 +106,18 @@ function renderHero(projects) {
 
   track.innerHTML = featured.map(p => {
     const t = toolInfo(p.ai_tool);
+    const logoTag = p.logo_url
+      ? `<img src="${p.logo_url}" class="hero-logo-sm" alt="${p.title}">`
+      : '';
     return `<div class="hero-card ${p.featured_gradient || 'hg-1'}" data-id="${p.id}">
       <div class="hero-overlay"></div>
-      <div class="hero-deco">${p.emoji || '🚀'}</div>
+      ${p.logo_url ? '' : `<div class="hero-deco">${p.emoji || '🚀'}</div>`}
       <div class="hero-content">
         <div class="hero-badge">✦ ${p.featured_badge || '주목 프로젝트'}</div>
-        <h2 class="hero-title">${p.title}</h2>
+        <div class="hero-title-row">
+          ${logoTag}
+          <h2 class="hero-title">${p.title}</h2>
+        </div>
         <p class="hero-sub">${p.description || ''}</p>
         <div class="hero-meta">
           <span class="hero-author">by ${p.coder_name || '익명'}</span>

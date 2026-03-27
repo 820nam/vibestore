@@ -141,9 +141,7 @@ function goSlide(i) {
 }
 
 function renderTrendingRow(projects) {
-  const sorted = [...projects]
-    .sort((a,b) => (b.rating * (b.review_count || 1)) - (a.rating * (a.review_count || 1)))
-    .slice(0, 10);
+  const sorted = [...projects].slice(0, 10);
   const el = document.getElementById('trending-row');
   if (!sorted.length) { el.innerHTML = ''; return; }
   el.innerHTML = sorted.map(p => `
@@ -151,7 +149,7 @@ function renderTrendingRow(projects) {
       ${iconHTML(p)}
       <div class="ac-name">${p.title}</div>
       <div class="ac-cat">${p.category || ''}</div>
-      <div class="ac-btm">${stars(p.rating)}<button class="get-btn${paidCls(p)}">${priceLabel(p)}</button></div>
+      <div class="ac-btm"><button class="get-btn${paidCls(p)}">${priceLabel(p)}</button></div>
     </div>`).join('');
 }
 
@@ -176,7 +174,7 @@ function listItemHTML(p) {
         <span class="lchip">${p.ai_tool || ''}</span>
       </div>
     </div>
-    <div class="list-right">${stars(p.rating)}<button class="get-btn${paidCls(p)}">${priceLabel(p)}</button></div>
+    <div class="list-right"><button class="get-btn${paidCls(p)}">${priceLabel(p)}</button></div>
   </div>`;
 }
 
@@ -197,8 +195,6 @@ function renderRanking(projects, filter = 'all') {
   let list = [...projects];
   if (filter === 'free') list = list.filter(p => p.is_free);
   if (filter === 'paid') list = list.filter(p => !p.is_free);
-  list.sort((a,b) => (b.rating * Math.sqrt(b.review_count || 1)) - (a.rating * Math.sqrt(a.review_count || 1)));
-
   const el = document.getElementById('rank-list');
   if (!list.length) { showEmpty('rank-list', '해당하는 프로젝트가 없습니다'); return; }
   el.innerHTML = list.map((p,i) => `
@@ -208,7 +204,7 @@ function renderRanking(projects, filter = 'all') {
       <div class="rank-info">
         <div class="rank-name">${p.title}</div>
         <div class="rank-sub">${p.description || ''}</div>
-        <div class="rank-meta">${stars(p.rating)}<span>${p.rating || 0} (${p.review_count || 0})</span><span>·</span><span>${p.ai_tool || ''}</span></div>
+        <div class="rank-meta"><span>${p.ai_tool || ''}</span><span>·</span><span>${p.category || ''}</span></div>
       </div>
       <div class="rank-right"><button class="get-btn${paidCls(p)}">${priceLabel(p)}</button></div>
     </div>`).join('');
@@ -240,7 +236,6 @@ function openDetail(id) {
         <div class="d-meta">
           <div class="d-name">${p.title}</div>
           <div class="d-coder">by ${p.coder_name || '익명'}</div>
-          <div class="d-rating">${stars(p.rating)}<span style="font-weight:700">${p.rating || 0}</span><span>(${(p.review_count || 0).toLocaleString()}개 리뷰)</span></div>
         </div>
       </div>
       <p class="d-desc">${p.long_desc || p.description || ''}</p>
@@ -248,7 +243,6 @@ function openDetail(id) {
         <div class="info-box"><div class="info-lbl">카테고리</div><div class="info-val">${catName}</div></div>
         <div class="info-box"><div class="info-lbl">가격</div><div class="info-val">${p.is_free ? '무료' : (p.price || '유료')}</div></div>
         <div class="info-box"><div class="info-lbl">제작자</div><div class="info-val">${p.coder_name || '익명'}</div></div>
-        <div class="info-box"><div class="info-lbl">리뷰</div><div class="info-val">${(p.review_count || 0).toLocaleString()}개</div></div>
       </div>
       <div class="d-ai">
         <div class="d-ai-icon ${t.cls}">${t.emoji}</div>
@@ -371,7 +365,7 @@ function filterByCat(catId) {
   renderRankingCustom(filtered);
 }
 function renderRankingCustom(list) {
-  list = [...list].sort((a,b) => (b.rating * Math.sqrt(b.review_count||1)) - (a.rating * Math.sqrt(a.review_count||1)));
+  list = [...list];
   const el = document.getElementById('rank-list');
   if (!list.length) { showEmpty('rank-list', '해당하는 프로젝트가 없습니다'); return; }
   el.innerHTML = list.map((p,i) => `
@@ -381,7 +375,7 @@ function renderRankingCustom(list) {
       <div class="rank-info">
         <div class="rank-name">${p.title}</div>
         <div class="rank-sub">${p.description||''}</div>
-        <div class="rank-meta">${stars(p.rating)}<span>${p.rating||0} (${p.review_count||0})</span></div>
+        <div class="rank-meta"><span>${p.ai_tool||''}</span><span>·</span><span>${p.category||''}</span></div>
       </div>
       <div class="rank-right"><button class="get-btn${paidCls(p)}">${priceLabel(p)}</button></div>
     </div>`).join('');

@@ -226,9 +226,7 @@ input, select, textarea { font-family: inherit; }
 .ac-cat  { font-size: 11px; color: var(--label-2); margin-bottom: 7px; }
 .ac-btm  { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
 
-/* Stars */
-.stars { font-size: 10px; color: var(--label-3); letter-spacing: 0.5px; }
-.stars .sf { color: var(--gold); }
+
 
 /* GET button */
 .get-btn {
@@ -373,7 +371,6 @@ input, select, textarea { font-family: inherit; }
 .d-meta { flex: 1; min-width: 0; padding-bottom: 4px; }
 .d-name { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
 .d-coder { font-size: 14px; color: var(--label-2); margin-bottom: 6px; }
-.d-rating { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--label-2); }
 .d-desc { font-size: 15px; line-height: 1.7; color: var(--label); margin-bottom: 22px; }
 .d-info { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 20px; }
 .info-box { background: var(--bg); border-radius: var(--r-card); padding: 13px; }

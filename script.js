@@ -20,6 +20,7 @@ const CAT_META = {
   'Game':           { name:'게임',           emoji:'🎮', bg:'linear-gradient(135deg,#5856D6,#A29BFE)' },
   'Utility':        { name:'유틸리티',       emoji:'🔧', bg:'linear-gradient(135deg,#00C7BE,#55EFC4)' },
   'AI Product':     { name:'AI 프로덕트',   emoji:'🧠', bg:'linear-gradient(135deg,#FF6B6B,#FDCB6E)' },
+  'Social':         { name:'소셜',           emoji:'💬', bg:'linear-gradient(135deg,#007AFF,#5AC8FA)' },
 };
 
 // === STATE ===

@@ -234,10 +234,6 @@ function openDetail(id) {
   const tags = Array.isArray(p.tags) ? p.tags : [];
 
   document.getElementById('detail-content').innerHTML = `
-    <div class="d-hero ${p.logo_url ? 'has-logo' : (p.featured_gradient || p.gradient_class || 'gc-1')}">
-      ${p.logo_url ? `<img src="${p.logo_url}" alt="${p.title}" class="d-hero-logo">` : `<span style="position:relative;z-index:1">${p.emoji || '🚀'}</span>`}
-      <div class="d-hero-fade"></div>
-    </div>
     <div class="d-body">
       <div class="d-top">
         <div class="d-icon-wrap">${iconHTML(p, 'sz-100')}</div>

@@ -367,12 +367,8 @@ input, select, textarea { font-family: inherit; }
 .modal-close:hover { background: var(--sep); color: var(--label); }
 
 /* Detail Modal */
-.d-hero { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 80px; position: relative; border-radius: 20px 20px 0 0; overflow: hidden; }
-.d-hero.has-logo { background: #f2f2f7; }
-.d-hero-logo { width: 100%; height: 100%; object-fit: cover; }
-.d-hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 64px; background: linear-gradient(to top,var(--card),transparent); }
-.d-body { padding: 0 24px 32px; }
-.d-top { display: flex; gap: 16px; margin-top: -28px; margin-bottom: 20px; align-items: flex-end; }
+.d-body { padding: 24px 24px 32px; }
+.d-top { display: flex; gap: 16px; margin-bottom: 20px; align-items: center; }
 .d-icon-wrap .app-icon { border: 3px solid var(--card); }
 .d-meta { flex: 1; min-width: 0; padding-bottom: 4px; }
 .d-name { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }

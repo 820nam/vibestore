@@ -210,12 +210,12 @@ input, select, textarea { font-family: inherit; }
 .gc-12 { background: linear-gradient(135deg,#636E72,#2D3436); }
 
 /* Hero featured gradients */
-.hg-1 { background: linear-gradient(135deg,#1a1a2e,#0f3460); }
-.hg-2 { background: linear-gradient(135deg,#0f0c29,#302b63,#24243e); }
-.hg-3 { background: linear-gradient(135deg,#c0392b,#4a0e0e); }
-.hg-4 { background: linear-gradient(135deg,#134E5E,#71B280); }
-.hg-5 { background: linear-gradient(135deg,#1c1c1c,#3a3a3a); }
-.hg-waggle { background: linear-gradient(135deg,#0055FF,#0033CC); }
+.hg-1 { background: linear-gradient(135deg,#007AFF,#0040CC); }
+.hg-2 { background: linear-gradient(135deg,#7C3AED,#4F1FA8); }
+.hg-3 { background: linear-gradient(135deg,#E11D48,#9F1239); }
+.hg-4 { background: linear-gradient(135deg,#059669,#065F46); }
+.hg-5 { background: linear-gradient(135deg,#EA580C,#9A3412); }
+.hg-waggle { background: linear-gradient(135deg,#0066FF,#0033CC); }
 
 /* Tool colors */
 .tc-Cursor   { background: #1C1C1E; }

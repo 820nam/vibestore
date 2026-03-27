@@ -1,5 +1,5 @@
 // === SUPABASE INIT ===
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 // === CONSTANTS ===
 const AI_TOOLS = [
@@ -71,7 +71,7 @@ function showEmpty(containerId, msg = '등록된 프로젝트가 없습니다') 
 
 // === FETCH ===
 async function fetchProjects() {
-  const { data, error } = await supabase
+  const { data, error } = await db
     .from('projects')
     .select('*')
     .order('created_at', { ascending: false });
@@ -293,7 +293,7 @@ async function submitProject(formData) {
     is_editors_pick: false,
   };
 
-  const { error } = await supabase.from('projects').insert([payload]);
+  const { error } = await db.from('projects').insert([payload]);
   if (error) { alert('등록 중 오류가 발생했습니다: ' + error.message); return false; }
   return true;
 }

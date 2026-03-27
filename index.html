@@ -1,103 +1,187 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibestore - Premium AI-Coded Projects</title>
-    <meta name="description" content="A curated gallery of premium websites built with Vibe Coding.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibestore — AI 바이브코딩 프로젝트 스토어</title>
+  <meta name="description" content="AI 바이브코딩으로 만든 웹 프로젝트를 발견하고 공유하세요">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
-                <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Vibestore
+
+<nav class="ios-nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="7" fill="#007AFF"/>
+        <path d="M7 16.5L12 11.5L16 15.5L20 11.5L25 16.5M7 21.5L12 16.5L16 20.5L20 16.5L25 21.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Vibestore</span>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" id="search-open-btn" aria-label="검색">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="pill-btn" id="submit-open-btn">등록하기</button>
+    </div>
+  </div>
+</nav>
+
+<div class="tab-bar">
+  <div class="tab-inner">
+    <button class="tab-btn active" data-tab="today">오늘</button>
+    <button class="tab-btn" data-tab="trending">인기</button>
+    <button class="tab-btn" data-tab="new">새로 나온</button>
+    <button class="tab-btn" data-tab="categories">카테고리</button>
+  </div>
+</div>
+
+<main id="main-content">
+
+  <!-- Today Tab -->
+  <div class="tab-panel active" id="panel-today">
+    <div class="hero-wrap">
+      <div class="hero-track" id="hero-track"></div>
+      <div class="hero-dots" id="hero-dots"></div>
+    </div>
+    <div class="content-area">
+      <div class="section-row">
+        <div class="section-head">
+          <div><p class="eyebrow">지금 뜨는</p><h2 class="section-title">인기 바이브 프로젝트</h2></div>
+          <button class="see-all-btn" data-target="trending">전체 보기</button>
         </div>
-        <div class="nav-links">
-            <a href="#" class="active">Gallery</a>
-            <a href="#">Showcase</a>
-            <a href="#">About</a>
+        <div class="h-scroll-row" id="trending-row"></div>
+      </div>
+      <div class="section-row">
+        <div class="section-head">
+          <div><p class="eyebrow">도구별 탐색</p><h2 class="section-title">어떤 AI로 만들었나요?</h2></div>
         </div>
-        <button class="btn-primary">Submit Project</button>
-    </nav>
-
-    <!-- Hero Slider Section -->
-    <header class="hero-slider-section">
-        <div class="slider-container">
-            <div class="slider-track" id="hero-slider-track">
-                <!-- Images will be injected by JS -->
-            </div>
+        <div class="aitool-grid" id="aitool-grid"></div>
+      </div>
+      <div class="section-row">
+        <div class="section-head">
+          <div><p class="eyebrow">에디터 추천</p><h2 class="section-title">이번 주 에디터 픽</h2></div>
+          <button class="see-all-btn" data-target="new">전체 보기</button>
         </div>
-    </header>
+        <div class="app-list" id="editors-list"></div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Main Content: Filter & Gallery -->
-    <main class="container" id="gallery">
-        <!-- Sidebar Filters -->
-        <aside class="sidebar">
-            <div class="filter-group">
-                <h3>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="14" y2="12"></line><line x1="4" y1="18" x2="18" y2="18"></line></svg>
-                    카테고리
-                </h3>
-                <ul class="filter-list">
-                    <li class="active">전체 보기</li>
-                    <li>E-Commerce</li>
-                    <li>Portfolio</li>
-                    <li>SaaS Dashboard</li>
-                    <li>Landing Page</li>
-                </ul>
+  <!-- Trending Tab -->
+  <div class="tab-panel" id="panel-trending">
+    <div class="content-area">
+      <div class="page-head">
+        <h1>인기 프로젝트</h1>
+        <div class="filter-pills" id="trending-filters">
+          <button class="fpill active" data-filter="all">전체</button>
+          <button class="fpill" data-filter="free">무료</button>
+          <button class="fpill" data-filter="paid">유료</button>
+        </div>
+      </div>
+      <div class="rank-list" id="rank-list"></div>
+    </div>
+  </div>
+
+  <!-- New Tab -->
+  <div class="tab-panel" id="panel-new">
+    <div class="content-area">
+      <div class="page-head"><h1>새로 나온</h1></div>
+      <div class="app-list-full" id="new-list"></div>
+    </div>
+  </div>
+
+  <!-- Categories Tab -->
+  <div class="tab-panel" id="panel-categories">
+    <div class="content-area">
+      <div class="page-head"><h1>카테고리</h1></div>
+      <div class="cat-grid" id="cat-grid"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="search-overlay">
+  <div class="search-bar-row">
+    <button class="icon-btn" id="search-close-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="search-input-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="바이브 프로젝트 검색..." autocomplete="off">
+    </div>
+    <button class="cancel-btn" id="search-cancel-btn">취소</button>
+  </div>
+  <div class="search-body" id="search-body">
+    <p class="search-hint">프로젝트 이름, AI 도구, 카테고리로 검색해 보세요</p>
+  </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="detail-overlay">
+  <div class="modal-backdrop" id="detail-backdrop"></div>
+  <div class="modal-sheet" id="detail-sheet">
+    <button class="modal-close" id="detail-close">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="detail-content"></div>
+  </div>
+</div>
+
+<!-- Submit Modal -->
+<div class="modal-overlay" id="submit-overlay">
+  <div class="modal-backdrop" id="submit-backdrop"></div>
+  <div class="modal-sheet" id="submit-sheet">
+    <button class="modal-close" id="submit-close">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="submit-body">
+      <div class="vibe-notice">
+        <span class="vibe-icon">✦</span>
+        <div>
+          <p class="vibe-title">바이브코딩 전용 스토어</p>
+          <p class="vibe-sub">AI 도구로 만든 프로젝트만 등록할 수 있어요</p>
+        </div>
+      </div>
+      <h2>프로젝트 등록</h2>
+      <form id="submit-form" novalidate>
+        <div class="form-section">
+          <div class="field"><label>프로젝트 이름</label><input type="text" name="title" placeholder="My Vibe Project"></div>
+          <div class="field"><label>웹사이트 URL</label><input type="url" name="url" placeholder="https://"></div>
+          <div class="field"><label>한 줄 설명</label><input type="text" name="desc" placeholder="AI와 함께 만든 프로젝트입니다"></div>
+        </div>
+        <div class="form-section">
+          <div class="field">
+            <label>카테고리</label>
+            <select name="category">
+              <option value="">선택하세요</option>
+              <option>SaaS Dashboard</option><option>E-Commerce</option>
+              <option>Portfolio</option><option>Landing Page</option>
+              <option>Blog</option><option>Game</option>
+              <option>Utility</option><option>AI Product</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>가격</label>
+            <div class="radio-row">
+              <label class="radio-opt"><input type="radio" name="pricing" value="free" checked> 무료</label>
+              <label class="radio-opt"><input type="radio" name="pricing" value="paid"> 유료</label>
             </div>
+          </div>
+        </div>
+        <div class="ai-section">
+          <p class="req-label">사용한 AI 도구 <span class="req-err" id="tool-err">선택해 주세요</span></p>
+          <div class="aitool-picker" id="aitool-picker"></div>
+        </div>
+        <button type="submit" class="submit-cta">등록하기</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-            <div class="filter-group">
-                <h3>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16L22 12L18 8"></path><path d="M6 8L2 12L6 16"></path><path d="M14.5 4L9.5 20"></path></svg>
-                    프레임워크
-                </h3>
-                <div class="tag-cloud">
-                    <button class="tag active">React</button>
-                    <button class="tag">Next.js</button>
-                    <button class="tag">Vue</button>
-                    <button class="tag">Tailwind</button>
-                    <button class="tag">Three.js</button>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <h3>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    코더 이름
-                </h3>
-                <div class="search-box">
-                    <input type="text" placeholder="검색..." id="coder-search">
-                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Project Gallery -->
-        <section class="gallery-content">
-            <div class="gallery-header">
-                <h2>Featured Projects</h2>
-                <div class="toggle-group">
-                    <button class="toggle-btn">무료</button>
-                    <button class="toggle-btn">유료</button>
-                    <button class="toggle-btn active">모든 앱 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-                </div>
-            </div>
-
-            <div class="project-grid" id="project-container">
-                <!-- Project cards will be injected by JS -->
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

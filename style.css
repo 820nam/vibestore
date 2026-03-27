@@ -474,15 +474,112 @@ input, select, textarea { font-family: inherit; }
   .modal-overlay { align-items: center; }
   .modal-sheet { border-radius: 20px; max-height: 84vh; }
 }
-@media (max-width: 480px) {
-  .hero-card { min-height: 300px; padding: 28px 24px; }
-  .hero-title { font-size: 28px; }
-  .hero-sub { font-size: 14px; }
-  .hero-deco { display: none; }
-  .aitool-chip { padding: 12px; gap: 8px; }
-  .content-area { padding: 0 16px 60px; }
-  .d-info { grid-template-columns: 1fr; }
+
+/* === MOBILE (max 640px) === */
+@media (max-width: 640px) {
+  /* 탭 하이라이트 제거 */
+  * { -webkit-tap-highlight-color: transparent; }
+
+  /* 네비 */
+  .nav-inner { padding: 0 16px; }
+  .logo span  { font-size: 16px; }
+  .pill-btn   { padding: 6px 14px; font-size: 13px; }
+
+  /* 탭 바 */
+  .tab-inner  { padding: 0 12px; gap: 0; }
+  .tab-btn    { padding: 6px 12px; font-size: 14px; }
+
+  /* 히어로 */
+  .hero-card  { min-height: 260px; padding: 24px 20px; }
+  .hero-badge { font-size: 10px; padding: 3px 10px; margin-bottom: 10px; }
+  .hero-title-row { gap: 10px; margin-bottom: 8px; }
+  .hero-logo-sm   { width: 44px; height: 44px; border-radius: 11px; }
+  .hero-title     { font-size: 26px; }
+  .hero-sub       { font-size: 13px; margin-bottom: 14px; max-width: 100%; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+  .hero-meta      { margin-bottom: 16px; gap: 8px; }
+  .hero-author    { font-size: 12px; }
+  .hero-cta       { padding: 10px 22px; font-size: 14px; }
+  .hero-deco      { display: none; }
+  .hero-dots      { padding: 10px 0 4px; }
+
+  /* 콘텐츠 */
+  .content-area   { padding: 0 16px 80px; }
+
+  /* 섹션 */
+  .section-row    { padding: 20px 0; }
+  .section-head   { margin-bottom: 14px; }
+  .section-title  { font-size: 18px; }
+  .see-all-btn    { font-size: 14px; }
+  .eyebrow        { font-size: 10px; }
+
+  /* 앱 카드 (가로 스크롤) */
+  .app-card       { width: 120px; }
+  .app-card .app-icon { height: 120px; }
+  .app-card .app-icon .ie { font-size: 44px; }
+  .ac-name        { font-size: 11px; }
+  .ac-cat         { font-size: 10px; }
+
+  /* 리스트 아이템 */
+  .list-item      { padding: 14px 0; gap: 12px; }
+  .sz-60          { width: 54px; height: 54px; border-radius: 12px; }
+  .sz-60 .ie      { font-size: 22px; }
+  .list-title     { font-size: 14px; }
+  .list-desc      { font-size: 12px; }
+  .lchip          { font-size: 10px; }
+
+  /* 랭킹 */
+  .rank-item      { padding: 13px 0; gap: 10px; }
+  .rank-num       { width: 22px; font-size: 15px; }
+  .rank-name      { font-size: 14px; }
+  .rank-sub       { font-size: 12px; }
+  .rank-meta      { font-size: 11px; }
+  .page-head h1   { font-size: 26px; margin-bottom: 12px; }
+
+  /* AI 툴 그리드: 2열 */
+  .aitool-grid    { grid-template-columns: repeat(2,1fr); gap: 8px; }
+  .aitool-chip    { padding: 12px; gap: 8px; }
+  .tool-icon      { width: 34px; height: 34px; font-size: 16px; }
+  .aitool-name    { font-size: 13px; }
+  .aitool-count   { font-size: 11px; }
+
+  /* 카테고리 그리드 */
+  .cat-grid       { gap: 10px; padding-top: 16px; }
+  .cat-card       { height: 88px; padding: 14px 16px; }
+  .cat-name       { font-size: 14px; }
+  .cat-deco       { font-size: 30px; }
+
+  /* 검색 */
+  .search-body    { padding: 12px 16px; }
+
+  /* 모달 — iPhone 홈 바 고려 */
+  .modal-sheet    {
+    max-height: 92vh;
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+  .d-body         { padding: 20px 18px 28px; }
+  .d-top          { gap: 12px; margin-bottom: 16px; }
+  .sz-100         { width: 72px; height: 72px; border-radius: 16px; }
+  .sz-100 .ie     { font-size: 30px; }
+  .d-name         { font-size: 20px; }
+  .d-coder        { font-size: 13px; }
+  .d-desc         { font-size: 14px; }
+  .d-info         { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .info-box       { padding: 11px; }
+  .info-val       { font-size: 14px; }
+  .d-visit        { padding: 14px; font-size: 15px; }
+
+  /* 제출 폼 */
+  .submit-body    { padding: 20px 18px 28px; }
+  .submit-body h2 { font-size: 20px; margin-bottom: 16px; }
+  .aitool-picker  { grid-template-columns: repeat(3,1fr); gap: 6px; }
+  .tp-emoji       { font-size: 18px; }
+  .tp-name        { font-size: 11px; }
+  .submit-cta     { padding: 14px; font-size: 15px; }
+
+  /* 하단 여백 (아이폰 홈 바) */
+  body { padding-bottom: env(safe-area-inset-bottom, 0px); }
 }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }

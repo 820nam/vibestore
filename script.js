@@ -216,8 +216,19 @@ function openDetail(id) {
 }
 
 // === MODAL / SEARCH HELPERS ===
-function openModal(id)  { document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+function openModal(id) {
+  const el = document.getElementById(id);
+  el.style.display = 'flex';
+  el.offsetHeight; // force reflow for transition
+  el.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  const el = document.getElementById(id);
+  el.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { if (!el.classList.contains('open')) el.style.display = 'none'; }, 450);
+}
 
 function switchTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab===tab));

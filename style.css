@@ -341,9 +341,10 @@ input, select, textarea { font-family: inherit; }
 /* === MODALS === */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 400;
-  display: flex; align-items: flex-end; justify-content: center;
+  display: none; align-items: flex-end; justify-content: center;
   pointer-events: none;
 }
+.modal-overlay.open { display: flex; pointer-events: all; }
 .modal-overlay.open { pointer-events: all; }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.3s; }
 .modal-overlay.open .modal-backdrop { background: rgba(0,0,0,0.45); }

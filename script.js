@@ -40,6 +40,15 @@ function stars(r) {
 function priceLabel(p) { return p.is_free ? '보기' : (p.price || '유료'); }
 function paidCls(p)    { return p.is_free ? '' : ' paid'; }
 function toolInfo(id)  { return AI_TOOLS.find(t => t.id === id) || { id, emoji:'🔧', cls:'' }; }
+function heroBg(p) {
+  if (p.brand_color) {
+    // hex → darker shade for gradient end
+    const c = p.brand_color.replace('#','');
+    const darken = c.match(/.{2}/g).map(x => Math.max(0, parseInt(x,16) - 60).toString(16).padStart(2,'0')).join('');
+    return `style="background:linear-gradient(135deg,${p.brand_color},#${darken})"`;
+  }
+  return `class="${p.featured_gradient || 'hg-1'}"`;
+}
 function iconHTML(p, extraCls = '') {
   if (p.logo_url) {
     return `<div class="app-icon ${extraCls} logo-img-wrap"><img src="${p.logo_url}" alt="${p.title}" class="logo-img" loading="lazy" onerror="this.parentElement.outerHTML='<div class=\\'app-icon ${extraCls} ${p.gradient_class||'gc-1'}\\'><span class=\\'ie\\'>${p.emoji||'🚀'}</span></div>'"></div>`;
@@ -109,7 +118,7 @@ function renderHero(projects) {
     const logoTag = p.logo_url
       ? `<img src="${p.logo_url}" class="hero-logo-sm" alt="${p.title}">`
       : '';
-    return `<div class="hero-card ${p.featured_gradient || 'hg-1'}" data-id="${p.id}">
+    return `<div class="hero-card" ${heroBg(p)} data-id="${p.id}">
       <div class="hero-overlay"></div>
       ${p.logo_url ? '' : `<div class="hero-deco">${p.emoji || '🚀'}</div>`}
       <div class="hero-content">

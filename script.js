@@ -40,6 +40,12 @@ function stars(r) {
 function priceLabel(p) { return p.is_free ? '보기' : (p.price || '유료'); }
 function paidCls(p)    { return p.is_free ? '' : ' paid'; }
 function toolInfo(id)  { return AI_TOOLS.find(t => t.id === id) || { id, emoji:'🔧', cls:'' }; }
+function iconHTML(p, extraCls = '') {
+  if (p.logo_url) {
+    return `<div class="app-icon ${extraCls} logo-img-wrap"><img src="${p.logo_url}" alt="${p.title}" class="logo-img" loading="lazy" onerror="this.parentElement.outerHTML='<div class=\\'app-icon ${extraCls} ${p.gradient_class||'gc-1'}\\'><span class=\\'ie\\'>${p.emoji||'🚀'}</span></div>'"></div>`;
+  }
+  return `<div class="app-icon ${extraCls} ${p.gradient_class||'gc-1'}"><span class="ie">${p.emoji||'🚀'}</span></div>`;
+}
 
 // === LOADING STATE ===
 function showSkeleton(containerId, count = 6, type = 'card') {
@@ -142,7 +148,7 @@ function renderTrendingRow(projects) {
   if (!sorted.length) { el.innerHTML = ''; return; }
   el.innerHTML = sorted.map(p => `
     <div class="app-card" data-id="${p.id}">
-      <div class="app-icon ${p.gradient_class || 'gc-1'}"><span class="ie">${p.emoji || '🚀'}</span></div>
+      ${iconHTML(p)}
       <div class="ac-name">${p.title}</div>
       <div class="ac-cat">${p.category || ''}</div>
       <div class="ac-btm">${stars(p.rating)}<button class="get-btn${paidCls(p)}">${priceLabel(p)}</button></div>
@@ -161,7 +167,7 @@ function renderAiTools(projects) {
 
 function listItemHTML(p) {
   return `<div class="list-item" data-id="${p.id}">
-    <div class="app-icon sz-60 ${p.gradient_class || 'gc-1'}"><span class="ie">${p.emoji || '🚀'}</span></div>
+    ${iconHTML(p, 'sz-60')}
     <div class="list-info">
       <div class="list-title">${p.title}</div>
       <div class="list-desc">${p.description || ''}</div>
@@ -198,7 +204,7 @@ function renderRanking(projects, filter = 'all') {
   el.innerHTML = list.map((p,i) => `
     <div class="rank-item" data-id="${p.id}">
       <div class="rank-num${i<3?' t3':''}">${i+1}</div>
-      <div class="app-icon sz-60 ${p.gradient_class || 'gc-1'}"><span class="ie">${p.emoji || '🚀'}</span></div>
+      ${iconHTML(p, 'sz-60')}
       <div class="rank-info">
         <div class="rank-name">${p.title}</div>
         <div class="rank-sub">${p.description || ''}</div>
@@ -228,13 +234,13 @@ function openDetail(id) {
   const tags = Array.isArray(p.tags) ? p.tags : [];
 
   document.getElementById('detail-content').innerHTML = `
-    <div class="d-hero ${p.featured_gradient || p.gradient_class || 'gc-1'}">
-      <span style="position:relative;z-index:1">${p.emoji || '🚀'}</span>
+    <div class="d-hero ${p.logo_url ? 'has-logo' : (p.featured_gradient || p.gradient_class || 'gc-1')}">
+      ${p.logo_url ? `<img src="${p.logo_url}" alt="${p.title}" class="d-hero-logo">` : `<span style="position:relative;z-index:1">${p.emoji || '🚀'}</span>`}
       <div class="d-hero-fade"></div>
     </div>
     <div class="d-body">
       <div class="d-top">
-        <div class="d-icon-wrap"><div class="app-icon sz-100 ${p.gradient_class || 'gc-1'}"><span class="ie">${p.emoji || '🚀'}</span></div></div>
+        <div class="d-icon-wrap">${iconHTML(p, 'sz-100')}</div>
         <div class="d-meta">
           <div class="d-name">${p.title}</div>
           <div class="d-coder">by ${p.coder_name || '익명'}</div>
@@ -375,7 +381,7 @@ function renderRankingCustom(list) {
   el.innerHTML = list.map((p,i) => `
     <div class="rank-item" data-id="${p.id}">
       <div class="rank-num${i<3?' t3':''}">${i+1}</div>
-      <div class="app-icon sz-60 ${p.gradient_class||'gc-1'}"><span class="ie">${p.emoji||'🚀'}</span></div>
+      ${iconHTML(p, 'sz-60')}
       <div class="rank-info">
         <div class="rank-name">${p.title}</div>
         <div class="rank-sub">${p.description||''}</div>

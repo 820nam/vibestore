@@ -440,6 +440,23 @@ input, select, textarea { font-family: inherit; }
 }
 .submit-cta:hover { opacity: 0.85; }
 
+/* === SKELETON & EMPTY === */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #e8e8e8 25%, #f0f0f0 50%, #e8e8e8 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+}
+.skeleton-card { pointer-events: none; }
+.empty-state {
+  padding: 48px 0; text-align: center;
+  color: var(--label-2); font-size: 15px;
+}
+
 /* === RESPONSIVE === */
 @media (min-width: 640px) {
   .aitool-grid { grid-template-columns: repeat(6,1fr); }

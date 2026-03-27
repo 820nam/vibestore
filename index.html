@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibestore - Premium AI-Coded Projects</title>
+    <meta name="description" content="A curated gallery of premium websites built with Vibe Coding.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
+                <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Vibestore
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">Gallery</a>
+            <a href="#">Showcase</a>
+            <a href="#">About</a>
+        </div>
+        <button class="btn-primary">Submit Project</button>
+    </nav>
+
+    <!-- Hero Slider Section -->
+    <header class="hero-slider-section">
+        <div class="slider-container">
+            <div class="slider-track" id="hero-slider-track">
+                <!-- Images will be injected by JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content: Filter & Gallery -->
+    <main class="container" id="gallery">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <div class="filter-group">
+                <h3>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="14" y2="12"></line><line x1="4" y1="18" x2="18" y2="18"></line></svg>
+                    카테고리
+                </h3>
+                <ul class="filter-list">
+                    <li class="active">전체 보기</li>
+                    <li>E-Commerce</li>
+                    <li>Portfolio</li>
+                    <li>SaaS Dashboard</li>
+                    <li>Landing Page</li>
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16L22 12L18 8"></path><path d="M6 8L2 12L6 16"></path><path d="M14.5 4L9.5 20"></path></svg>
+                    프레임워크
+                </h3>
+                <div class="tag-cloud">
+                    <button class="tag active">React</button>
+                    <button class="tag">Next.js</button>
+                    <button class="tag">Vue</button>
+                    <button class="tag">Tailwind</button>
+                    <button class="tag">Three.js</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    코더 이름
+                </h3>
+                <div class="search-box">
+                    <input type="text" placeholder="검색..." id="coder-search">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Project Gallery -->
+        <section class="gallery-content">
+            <div class="gallery-header">
+                <h2>Featured Projects</h2>
+                <div class="toggle-group">
+                    <button class="toggle-btn">무료</button>
+                    <button class="toggle-btn">유료</button>
+                    <button class="toggle-btn active">모든 앱 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                </div>
+            </div>
+
+            <div class="project-grid" id="project-container">
+                <!-- Project cards will be injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
